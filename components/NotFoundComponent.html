@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>workflow-ui documentation</title>
+        <title>join-it-ui documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">workflow-ui documentation</a>
+            <a href="../" class="navbar-brand">join-it-ui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -237,48 +237,21 @@ export class NotFoundComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;body class&#x3D;&quot;error-page&quot;&gt;
-    &lt;div id&#x3D;&quot;layoutError&quot;&gt;
-        &lt;div id&#x3D;&quot;layoutError_content&quot;&gt;
-            &lt;main&gt;
-                &lt;div class&#x3D;&quot;container&quot;&gt;
-                    &lt;br&gt;
-                    &lt;br&gt;
-                    &lt;br&gt;
-                    &lt;br&gt;
-                    &lt;br&gt;
-                    &lt;br&gt;
-                    &lt;br&gt;
-                    &lt;br&gt;
-                    &lt;br&gt;
-                    &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
-                        &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
-                            &lt;div class&#x3D;&quot;text-center mt-4&quot;&gt;
-                                &lt;img class&#x3D;&quot;mb-4 img-error&quot; src&#x3D;&quot;assets/img/drawkit/color/drawkit-error-404.svg&quot; /&gt;
-                                &lt;p class&#x3D;&quot;lead&quot;&gt;This requested URL was not found on this server.&lt;/p&gt;
-                                &lt;a class&#x3D;&quot;text-arrow-icon&quot; routerLink&#x3D;&quot;/dashboard&quot;&gt;&lt;i class&#x3D;&quot;ml-0 mr-1&quot; data-feather&#x3D;&quot;arrow-left&quot;&gt;&lt;/i&gt;Return to Dashboard&lt;/a&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;bg-white py-10&quot;&gt;
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+                &lt;div class&#x3D;&quot;text-center mt-4&quot;&gt;
+                    &lt;img class&#x3D;&quot;img-fluid p-4&quot; src&#x3D;&quot;assets/img/illustrations/404-error-with-a-cute-animal.svg&quot;
+                        alt&#x3D;&quot;...&quot; /&gt;
+                    &lt;p class&#x3D;&quot;lead&quot;&gt;This requested URL was not found on this server.&lt;/p&gt;
+                    &lt;a class&#x3D;&quot;text-arrow-icon&quot; routerLink&#x3D;&quot;/board&quot;&gt;&lt;i class&#x3D;&quot;ml-0 mr-1&quot;
+                            data-feather&#x3D;&quot;arrow-left&quot;&gt;&lt;/i&gt;Return Home&lt;/a&gt;
                 &lt;/div&gt;
-            &lt;/main&gt;
-        &lt;/div&gt;
-        &lt;div id&#x3D;&quot;layoutError_footer&quot;&gt;
-            &lt;footer class&#x3D;&quot;footer mt-auto footer-light&quot;&gt;
-                &lt;div class&#x3D;&quot;container-fluid&quot;&gt;
-                    &lt;div class&#x3D;&quot;row&quot;&gt;
-                        &lt;div class&#x3D;&quot;col-md-6 small&quot;&gt;Copyright &amp;copy; Your Website 2020&lt;/div&gt;
-                        &lt;div class&#x3D;&quot;col-md-6 text-md-right small&quot;&gt;
-                            &lt;a href&#x3D;&quot;#!&quot;&gt;Privacy Policy&lt;/a&gt;
-                            &amp;middot;
-                            &lt;a href&#x3D;&quot;#!&quot;&gt;Terms &amp;amp; Conditions&lt;/a&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/footer&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;/body&gt;</code></pre>
+&lt;/section&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -313,8 +286,8 @@ export class NotFoundComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><body class="error-page">    <div id="layoutError">        <div id="layoutError_content">            <main>                <div class="container">                    <br>                    <br>                    <br>                    <br>                    <br>                    <br>                    <br>                    <br>                    <br>                    <div class="row justify-content-center">                        <div class="col-lg-6">                            <div class="text-center mt-4">                                <img class="mb-4 img-error" src="assets/img/drawkit/color/drawkit-error-404.svg" />                                <p class="lead">This requested URL was not found on this server.</p>                                <a class="text-arrow-icon" routerLink="/dashboard"><i class="ml-0 mr-1" data-feather="arrow-left"></i>Return to Dashboard</a>                            </div>                        </div>                    </div>                </div>            </main>        </div>        <div id="layoutError_footer">            <footer class="footer mt-auto footer-light">                <div class="container-fluid">                    <div class="row">                        <div class="col-md-6 small">Copyright &copy; Your Website 2020</div>                        <div class="col-md-6 text-md-right small">                            <a href="#!">Privacy Policy</a>                            &middot;                            <a href="#!">Terms &amp; Conditions</a>                        </div>                    </div>                </div>            </footer>        </div>    </div></body></div>'
-    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-admin-layout'},{'name': 'AlertComponent', 'selector': 'alert'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'ContactComponent', 'selector': 'app-contact'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'LoginComponent', 'selector': ''},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'OrganizationAddMembersComponent', 'selector': 'app-organization-add-members'},{'name': 'OrganizationComponent', 'selector': 'app-organization'},{'name': 'OrganizationJoinComponent', 'selector': 'app-organization-join'},{'name': 'OrganizationRegistrationComponent', 'selector': 'app-organization-registration'},{'name': 'ProjectComponent', 'selector': 'app-project'},{'name': 'ProjectsListComponent', 'selector': 'app-projects-list'},{'name': 'RegisterComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SupportComponent', 'selector': 'app-support'},{'name': 'UnauthorizedComponent', 'selector': 'app-unauthorized'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'}];
+        var COMPONENT_TEMPLATE = '<div><section class="bg-white py-10">    <div class="container">        <div class="row justify-content-center">            <div class="col-lg-6">                <div class="text-center mt-4">                    <img class="img-fluid p-4" src="assets/img/illustrations/404-error-with-a-cute-animal.svg"                        alt="..." />                    <p class="lead">This requested URL was not found on this server.</p>                    <a class="text-arrow-icon" routerLink="/board"><i class="ml-0 mr-1"                            data-feather="arrow-left"></i>Return Home</a>                </div>            </div>        </div>    </div></section></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'JobBoardComponent', 'selector': 'app-job-board'},{'name': 'JobPostingsComponent', 'selector': 'app-job-postings'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyPostingsComponent', 'selector': 'app-my-postings'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'PageHeaderComponent', 'selector': 'app-page-header'},{'name': 'PostingDetailsComponent', 'selector': 'app-posting-details'},{'name': 'PostingEditComponent', 'selector': 'app-posting-edit'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SignUpComponent', 'selector': 'app-sign-up'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NotFoundComponent'};
 </script>

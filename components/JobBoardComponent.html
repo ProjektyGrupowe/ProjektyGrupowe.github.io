@@ -35,7 +35,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>FooterComponent</li>
+  <li>JobBoardComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,7 +61,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/layout/footer/footer.component.ts</code>
+    <code>src/app/job-board/job-board.component.ts</code>
 </p>
 
 
@@ -91,19 +91,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-footer</code></td>
+                <td class="col-md-9"><code>app-job-board</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./footer.component.css</code></td>
+                <td class="col-md-9"><code>./job-board.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./footer.component.html</code></td>
+                <td class="col-md-9"><code>./job-board.component.html</code></td>
             </tr>
 
 
@@ -156,7 +156,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/layout/footer/footer.component.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/job-board/job-board.component.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -196,7 +196,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/layout/footer/footer.component.ts:12</a></div>
+                            class="link-to-prism">src/app/job-board/job-board.component.ts:12</a></div>
                 </td>
             </tr>
 
@@ -221,11 +221,11 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 
 @Component({
-  selector: &#x27;app-footer&#x27;,
-  templateUrl: &#x27;./footer.component.html&#x27;,
-  styleUrls: [&#x27;./footer.component.css&#x27;]
+  selector: &#x27;app-job-board&#x27;,
+  templateUrl: &#x27;./job-board.component.html&#x27;,
+  styleUrls: [&#x27;./job-board.component.css&#x27;]
 })
-export class FooterComponent implements OnInit {
+export class JobBoardComponent implements OnInit {
 
   constructor() { }
 
@@ -237,24 +237,13 @@ export class FooterComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;footer class&#x3D;&quot;footer pb-5 mt-auto bg-dark footer-dark&quot;&gt;
-    &lt;div class&#x3D;&quot;container&quot;&gt;
-        &lt;hr class&#x3D;&quot;my-5&quot; /&gt;
-        &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
-            &lt;div class&#x3D;&quot;col-md-6 small&quot;&gt;Copyright &amp;copy; Join IT 2021&lt;/div&gt;
-            &lt;div class&#x3D;&quot;col-md-6 text-md-right small&quot;&gt;
-                &lt;a href&#x3D;&quot;#!&quot;&gt;Privacy Policy&lt;/a&gt;
-                &amp;middot;
-                &lt;a href&#x3D;&quot;#!&quot;&gt;Terms &amp;amp; Conditions&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/footer&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;app-page-header&gt;&lt;/app-page-header&gt;
+&lt;app-job-postings&gt;&lt;/app-job-postings&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
-                    <code>./footer.component.css</code>
+                    <code>./job-board.component.css</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss"></code></pre>
     </div>
@@ -284,10 +273,10 @@ export class FooterComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><footer class="footer pb-5 mt-auto bg-dark footer-dark">    <div class="container">        <hr class="my-5" />        <div class="row align-items-center">            <div class="col-md-6 small">Copyright &copy; Join IT 2021</div>            <div class="col-md-6 text-md-right small">                <a href="#!">Privacy Policy</a>                &middot;                <a href="#!">Terms &amp; Conditions</a>            </div>        </div>    </div></footer></div>'
+        var COMPONENT_TEMPLATE = '<div><app-page-header></app-page-header><app-job-postings></app-job-postings></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'JobBoardComponent', 'selector': 'app-job-board'},{'name': 'JobPostingsComponent', 'selector': 'app-job-postings'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyPostingsComponent', 'selector': 'app-my-postings'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'PageHeaderComponent', 'selector': 'app-page-header'},{'name': 'PostingDetailsComponent', 'selector': 'app-posting-details'},{'name': 'PostingEditComponent', 'selector': 'app-posting-edit'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SignUpComponent', 'selector': 'app-sign-up'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'FooterComponent'};
+    var ACTUAL_COMPONENT = {'name': 'JobBoardComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -322,7 +311,7 @@ export class FooterComponent implements OnInit {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'FooterComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'JobBoardComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

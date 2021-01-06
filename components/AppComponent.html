@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>workflow-ui documentation</title>
+        <title>join-it-ui documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">workflow-ui documentation</a>
+            <a href="../" class="navbar-brand">join-it-ui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -170,7 +170,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;WorkflowUI&#x27;</code>
+                            <i>Default value : </i><code>&#x27;JoinIT-UI&#x27;</code>
                         </td>
                     </tr>
                         <tr>
@@ -196,13 +196,23 @@
   styleUrls: [&#x27;./app.component.css&#x27;]
 })
 export class AppComponent {
-  title &#x3D; &#x27;WorkflowUI&#x27;;
+  title &#x3D; &#x27;JoinIT-UI&#x27;;
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div id&#x3D;&quot;layoutDefault&quot;&gt;
+  &lt;div id&#x3D;&quot;layoutDefault_content&quot;&gt;
+    &lt;main&gt;
+      &lt;app-navbar&gt;&lt;/app-navbar&gt;
+      &lt;router-outlet&gt;&lt;/router-outlet&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+  &lt;div id&#x3D;&quot;layoutDefault_footer&quot;&gt;
+    &lt;app-footer&gt;&lt;/app-footer&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -237,8 +247,8 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><router-outlet></router-outlet></div>'
-    var COMPONENTS = [{'name': 'AdminLayoutComponent', 'selector': 'app-admin-layout'},{'name': 'AlertComponent', 'selector': 'alert'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'ContactComponent', 'selector': 'app-contact'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'LoginComponent', 'selector': ''},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'OrganizationAddMembersComponent', 'selector': 'app-organization-add-members'},{'name': 'OrganizationComponent', 'selector': 'app-organization'},{'name': 'OrganizationJoinComponent', 'selector': 'app-organization-join'},{'name': 'OrganizationRegistrationComponent', 'selector': 'app-organization-registration'},{'name': 'ProjectComponent', 'selector': 'app-project'},{'name': 'ProjectsListComponent', 'selector': 'app-projects-list'},{'name': 'RegisterComponent', 'selector': ''},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SupportComponent', 'selector': 'app-support'},{'name': 'UnauthorizedComponent', 'selector': 'app-unauthorized'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'}];
+        var COMPONENT_TEMPLATE = '<div><div id="layoutDefault">  <div id="layoutDefault_content">    <main>      <app-navbar></app-navbar>      <router-outlet></router-outlet>    </main>  </div>  <div id="layoutDefault_footer">    <app-footer></app-footer>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'JobBoardComponent', 'selector': 'app-job-board'},{'name': 'JobPostingsComponent', 'selector': 'app-job-postings'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyPostingsComponent', 'selector': 'app-my-postings'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'PageHeaderComponent', 'selector': 'app-page-header'},{'name': 'PostingDetailsComponent', 'selector': 'app-posting-details'},{'name': 'PostingEditComponent', 'selector': 'app-posting-edit'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SignUpComponent', 'selector': 'app-sign-up'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
 </script>

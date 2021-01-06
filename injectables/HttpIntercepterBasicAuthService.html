@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>workflow-ui documentation</title>
+        <title>join-it-ui documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">workflow-ui documentation</a>
+            <a href="../" class="navbar-brand">join-it-ui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -27,7 +27,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content interceptor">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -36,10 +36,9 @@
 
 
 
-
 <ol class="breadcrumb">
-  <li>Interceptors</li>
-  <li>UserBackendInterceptor</li>
+  <li>Injectables</li>
+  <li>HttpIntercepterBasicAuthService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -57,8 +56,9 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/helpers/userbackend.interceptor.ts</code>
+            <code>src/app/service/http/http-intercepter-basic-auth.service.ts</code>
         </p>
+
 
 
 
@@ -90,6 +90,54 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(basicAuthenticationService: <a href="../injectables/BasicAuthenticationService.html">BasicAuthenticationService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/service/http/http-intercepter-basic-auth.service.ts:8</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>basicAuthenticationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BasicAuthenticationService.html" target="_self" >BasicAuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -118,8 +166,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/app/helpers/userbackend.interceptor.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="12"
+                            class="link-to-prism">src/app/service/http/http-intercepter-basic-auth.service.ts:12</a></div>
                 </td>
             </tr>
 
@@ -168,7 +216,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;HttpEvent&lt;any&gt;&gt;</code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -184,107 +232,36 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from &#x27;@angular/common/http&#x27;;
-import { Observable, of, throwError } from &#x27;rxjs&#x27;;
-import { delay, mergeMap, materialize, dematerialize } from &#x27;rxjs/operators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpRequest, HttpHandler } from &#x27;@angular/common/http&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { BasicAuthenticationService } from &#x27;../basic-authentication.service&#x27;;
 
-// array in local storage for registered users
-const users &#x3D; JSON.parse(localStorage.getItem(&#x27;users&#x27;)) || [];
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class HttpIntercepterBasicAuthService {
 
-@Injectable()
-export class UserBackendInterceptor implements HttpInterceptor {
-    intercept(request: HttpRequest&lt;any&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;any&gt;&gt; {
-        const { url, method, headers, body } &#x3D; request;
+  constructor(private basicAuthenticationService: BasicAuthenticationService) { }
 
-        // wrap in delayed observable to simulate server api call
-        return of(null)
-            .pipe(mergeMap(handleRoute))
-            .pipe(materialize())
-            .pipe(delay(500))
-            .pipe(dematerialize());
+  intercept(request: HttpRequest&lt;any&gt;, next: HttpHandler){
+    let basicAuthHeaderString &#x3D; this.basicAuthenticationService.getAuthenticatedToken();
+    let username &#x3D; this.basicAuthenticationService.getAuthenticatedUser();
 
-        function handleRoute() {
-            switch (true) {
-                case url.endsWith(&#x27;/users/authenticate&#x27;) &amp;&amp; method &#x3D;&#x3D;&#x3D; &#x27;POST&#x27;:
-                    return authenticate();
-                case url.endsWith(&#x27;/users/register&#x27;) &amp;&amp; method &#x3D;&#x3D;&#x3D; &#x27;POST&#x27;:
-                    return register();
-                case url.endsWith(&#x27;/users&#x27;) &amp;&amp; method &#x3D;&#x3D;&#x3D; &#x27;GET&#x27;:
-                    return getUsers();
-                default:
-                    // pass through any requests not handled above
-                    return next.handle(request);
-            }
+    if(basicAuthHeaderString &amp;&amp; username){
+      request &#x3D; request.clone({
+        setHeaders : {
+          Authorization : basicAuthHeaderString
         }
-
-        // route functions
-
-        function authenticate() {
-            const { username, password } &#x3D; body;
-            const user &#x3D; users.find(x &#x3D;&gt; x.username &#x3D;&#x3D;&#x3D; username &amp;&amp; x.password &#x3D;&#x3D;&#x3D; password);
-            if (!user) { return error(&#x27;Username or password is incorrect&#x27;); }
-            return ok({
-                id: user.id,
-                username: user.username,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                token: &#x27;fake-jwt-token&#x27;
-            });
-        }
-
-        function register() {
-            const user &#x3D; body;
-
-            if (users.find(x &#x3D;&gt; x.username &#x3D;&#x3D;&#x3D; user.username)) {
-                return error(&#x27;Username &quot;&#x27; + user.username + &#x27;&quot; is already taken&#x27;);
-            }
-
-            if (user.password.length &lt; 6) {
-                return error(&#x27;Password need to have at least 6 characters.&#x27;);
-            }
-
-            user.id &#x3D; users.length ? Math.max(...users.map(x &#x3D;&gt; x.id)) + 1 : 1;
-            users.push(user);
-            localStorage.setItem(&#x27;users&#x27;, JSON.stringify(users));
-
-            return ok();
-        }
-
-        function getUsers() {
-            if (!isLoggedIn()) { return unauthorized(); }
-            return ok(users);
-        }
-
-        // helper functions
-
-        // tslint:disable-next-line: no-shadowed-variable
-        function ok(body?) {
-            return of(new HttpResponse({ status: 200, body }));
-        }
-
-        function error(message) {
-            return throwError({ error: { message } });
-        }
-
-        function unauthorized() {
-            return throwError({ status: 401, error: { message: &#x27;Unauthorized&#x27; } });
-        }
-
-        function isLoggedIn() {
-            return headers.get(&#x27;Authorization&#x27;) &#x3D;&#x3D;&#x3D; &#x27;Bearer fake-jwt-token&#x27;;
-        }
-
-        function idFromUrl() {
-            const urlParts &#x3D; url.split(&#x27;/&#x27;);
-            // tslint:disable-next-line: radix
-            return parseInt(urlParts[urlParts.length - 1]);
-        }
+      })
     }
+    return next.handle(request);
+  }
 }
 </code></pre>
     </div>
+
 </div>
+
 
 
 
@@ -312,8 +289,8 @@ export class UserBackendInterceptor implements HttpInterceptor {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interceptor';
-            var COMPODOC_CURRENT_PAGE_URL = 'UserBackendInterceptor.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'HttpIntercepterBasicAuthService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

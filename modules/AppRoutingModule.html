@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>workflow-ui documentation</title>
+        <title>join-it-ui documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">workflow-ui documentation</a>
+            <a href="../" class="navbar-brand">join-it-ui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -54,7 +54,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/app.routing.ts</code>
+            <code>src/app/app-routing.ts</code>
         </p>
 
 
@@ -72,43 +72,79 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
+import { FormComponent } from &#x27;./form/form.component&#x27;;
+import { JobBoardComponent } from &#x27;./job-board/job-board.component&#x27;;
 import { LoginComponent } from &#x27;./login/login.component&#x27;;
-import { RegisterComponent } from &#x27;./register/register.component&#x27;;
 import { NotFoundComponent } from &#x27;./not-found/not-found.component&#x27;;
-import { AuthGuard } from &#x27;./helpers/auth.guard&#x27;;
-import { UnauthorizedComponent } from &#x27;./unauthorized/unauthorized.component&#x27;;
-import { AdminLayoutComponent } from &#x27;./layout/admin-layout/admin-layout.component&#x27;;
+import { PostingDetailsComponent } from &#x27;./posting-details/posting-details.component&#x27;;
+import { ProfileComponent } from &#x27;./profile/profile.component&#x27;;
+import { SignUpComponent } from &#x27;./sign-up/sign-up.component&#x27;;
+import { RouteGuardService } from &#x27;./service/route-guard.service&#x27;
+import { MyPostingsComponent } from &#x27;./my-postings/my-postings.component&#x27;;
+import { PostingEditComponent } from &#x27;./posting-edit/posting-edit.component&#x27;;
 
 
 const routes: Routes &#x3D; [
   {
-    path: &#x27;&#x27;,
-    component: AdminLayoutComponent,
-    canActivate: [AuthGuard],
-    children: [
-        {
-      path: &#x27;&#x27;,
-      loadChildren: () &#x3D;&gt; &quot;import(&#x27;src/app/layout/admin-layout/admin-layout.module&#x27;).then(m &#x3D;&gt; m.AdminLayoutModule)&quot;
-  }]},
+    path: &quot;posting-details/:id&quot;,
+    component: PostingDetailsComponent
+  },
   {
-    path: &#x27;login&#x27;,
+    path: &quot;board&quot;,
+    component: JobBoardComponent
+  },
+  {
+    path: &quot;board/localization/:localization&quot;,
+    component: JobBoardComponent
+  },
+  {
+    path: &quot;board/category/:category&quot;,
+    component: JobBoardComponent
+  },
+  {
+    path: &quot;board/language/:requirement&quot;,
+    component: JobBoardComponent
+  },
+  {
+    path: &quot;form&quot;,
+    component: FormComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: &quot;profile&quot;,
+    component: ProfileComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: &quot;my-postings&quot;,
+    component: MyPostingsComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: &quot;my-postings/:id&quot;,
+    component: PostingEditComponent,
+    canActivate: [RouteGuardService]
+  },
+  {
+    path: &quot;login&quot;,
     component: LoginComponent
   },
   {
-    path: &#x27;register&#x27;,
-    component: RegisterComponent
+    path: &quot;sign-up&quot;,
+    component: SignUpComponent
   },
   {
-    path: &#x27;404&#x27;,
+    path: &quot;404&quot;,
     component: NotFoundComponent
   },
   {
-    path: &#x27;500&#x27;,
-    component: UnauthorizedComponent
+    path: &quot;&quot;,
+    redirectTo: &quot;/board&quot;,
+    pathMatch: &quot;full&quot;
   },
   {
-    path: &#x27;**&#x27;,
-    redirectTo: &#x27;/404&#x27;
+    path: &quot;**&quot;,
+    redirectTo: &quot;404&quot;
   }
 ];
 
@@ -117,8 +153,6 @@ const routes: Routes &#x3D; [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const appRoutingModule &#x3D; RouterModule.forRoot(routes);
-
 </code></pre>
     </div>
 </div>
