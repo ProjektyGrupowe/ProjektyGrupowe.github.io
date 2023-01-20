@@ -3,17 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>join-it-ui documentation</title>
+        <title>workflow-ui documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">join-it-ui documentation</a>
+            <a href="../" class="navbar-brand">workflow-ui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -27,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content guard">
                    <div class="content-data">
 
 
@@ -36,9 +37,12 @@
 
 
 
+
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>RouteGuardService</li>
+    <li>Guards</li>
+    <li >AuthManagerGuard</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -51,18 +55,20 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
-        <p class="comment">
+        <div class="tab-pane fade active in" id="c-info">
+            <p class="comment">
             <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/app/service/route-guard.service.ts</code>
-        </p>
+            </p>
+            <p class="comment">
+                <code>src/app/helpers/auth-menager.guard.ts</code>
+            </p>
 
 
 
 
-            <section>
+
+
+                <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -76,7 +82,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#canActivate">canActivate</a>
+                                <a href="#canActivate" >canActivate</a>
                             </li>
                         </ul>
                     </td>
@@ -90,18 +96,18 @@
     </table>
 </section>
 
-            <section>
+                <section>
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(basicAuthenticationService: <a href="../injectables/BasicAuthenticationService.html">BasicAuthenticationService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, authenticationService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/service/route-guard.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/helpers/auth-menager.guard.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -119,10 +125,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>basicAuthenticationService</td>
+                                                        <td>router</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/BasicAuthenticationService.html" target="_self" >BasicAuthenticationService</a></code>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -131,10 +137,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>router</td>
+                                                        <td>authenticationService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -151,7 +157,7 @@
         </table>
 </section>
 
-            <section>
+                <section>
     
     <h3 id="methods">
         Methods
@@ -162,9 +168,7 @@
                 <td class="col-md-4">
                     <a name="canActivate"></a>
                     <span class="name">
-                        <b>
-                            canActivate
-                        </b>
+                        <span ><b>canActivate</b></span>
                         <a href="#canActivate"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -178,8 +182,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/service/route-guard.service.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/app/helpers/auth-menager.guard.ts:13</a></div>
                 </td>
             </tr>
 
@@ -189,6 +193,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -239,34 +244,35 @@
         </tbody>
     </table>
 </section>
+        </div>
 
-    </div>
 
+        <div class="tab-pane fade  tab-source-code" id="c-source">
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from &#x27;@angular/router&#x27;;
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from &#x27;@angular/router&#x27;;
-import { BasicAuthenticationService } from &#x27;./basic-authentication.service&#x27;;
+import { AuthenticationService } from &#x27;../services/authentication.service&#x27;;
 
-@Injectable({
-  providedIn: &#x27;root&#x27;
-})
-export class RouteGuardService {
+@Injectable({ providedIn: &#x27;root&#x27; })
+export class AuthManagerGuard implements CanActivate {
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {}
 
-  constructor(private basicAuthenticationService: BasicAuthenticationService, private router: Router) { }
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        const currentUser &#x3D; this.authenticationService.currentUserValue;
+        if (currentUser.role &#x3D;&#x3D; &#x27;Manager&#x27;) {
+            // authorised so return true
+            return true;
+        }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    if(this.basicAuthenticationService.isUserLoggedIn()){
-      return true;
+        // not logged in so redirect to login page with the return url
+        this.router.navigate([&#x27;/timesheets-list&#x27;], { queryParams: { returnUrl: state.url }});
+        return false;
     }
-
-    this.router.navigate([&#x27;login&#x27;])
-    return false;
-  }
-}
-</code></pre>
-    </div>
-
+}</code></pre>
+        </div>
 </div>
 
 
@@ -275,14 +281,13 @@ export class RouteGuardService {
 
 
 
-                   
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -294,18 +299,27 @@ export class RouteGuardService {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'RouteGuardService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthManagerGuard.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+
        <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

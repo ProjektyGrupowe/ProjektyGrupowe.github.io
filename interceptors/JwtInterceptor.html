@@ -3,17 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>join-it-ui documentation</title>
+        <title>workflow-ui documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	      <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">join-it-ui documentation</a>
+            <a href="../" class="navbar-brand">workflow-ui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -27,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content interceptor">
                    <div class="content-data">
 
 
@@ -36,9 +37,11 @@
 
 
 
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>HttpIntercepterBasicAuthService</li>
+  <li>Interceptors</li>
+  <li >JwtInterceptor</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -56,7 +59,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/service/http/http-intercepter-basic-auth.service.ts</code>
+            <code>src/app/helpers/jwt.interceptor.ts</code>
         </p>
 
 
@@ -76,7 +79,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#intercept">intercept</a>
+                                <a href="#intercept" >intercept</a>
                             </li>
                         </ul>
                     </td>
@@ -96,12 +99,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(basicAuthenticationService: <a href="../injectables/BasicAuthenticationService.html">BasicAuthenticationService</a>)</code>
+<code>constructor(authenticationService: <a href="../injectables/AuthenticationService.html" target="_self">AuthenticationService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/service/http/http-intercepter-basic-auth.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/helpers/jwt.interceptor.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -119,10 +122,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>basicAuthenticationService</td>
+                                                        <td>authenticationService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/BasicAuthenticationService.html" target="_self" >BasicAuthenticationService</a></code>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -150,9 +153,7 @@
                 <td class="col-md-4">
                     <a name="intercept"></a>
                     <span class="name">
-                        <b>
-                            intercept
-                        </b>
+                        <span ><b>intercept</b></span>
                         <a href="#intercept"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
@@ -166,8 +167,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/service/http/http-intercepter-basic-auth.service.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="11"
+                            class="link-to-prism">src/app/helpers/jwt.interceptor.ts:11</a></div>
                 </td>
             </tr>
 
@@ -177,6 +178,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -216,7 +218,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Observable&lt;HttpEvent&lt;any&gt;&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -232,34 +234,32 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpRequest, HttpHandler } from &#x27;@angular/common/http&#x27;;
-import { Injectable } from &#x27;@angular/core&#x27;;
-import { BasicAuthenticationService } from &#x27;../basic-authentication.service&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from &#x27;@angular/common/http&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
 
-@Injectable({
-  providedIn: &#x27;root&#x27;
-})
-export class HttpIntercepterBasicAuthService {
+import { AuthenticationService } from &#x27;../services/authentication.service&#x27;;
 
-  constructor(private basicAuthenticationService: BasicAuthenticationService) { }
+@Injectable()
+export class JwtInterceptor implements HttpInterceptor {
+    constructor(private authenticationService: AuthenticationService) {}
 
-  intercept(request: HttpRequest&lt;any&gt;, next: HttpHandler){
-    let basicAuthHeaderString &#x3D; this.basicAuthenticationService.getAuthenticatedToken();
-    let username &#x3D; this.basicAuthenticationService.getAuthenticatedUser();
-
-    if(basicAuthHeaderString &amp;&amp; username){
-      request &#x3D; request.clone({
-        setHeaders : {
-          Authorization : basicAuthHeaderString
+    intercept(request: HttpRequest&lt;any&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;any&gt;&gt; {
+        // add authorization header with jwt token if available
+        const currentUser &#x3D; this.authenticationService.currentUserValue;
+        if (currentUser &amp;&amp; currentUser.token) {
+            request &#x3D; request.clone({
+                setHeaders: {
+                    Authorization: &#x60;Bearer ${currentUser.token}&#x60;
+                }
+            });
         }
-      })
+
+        return next.handle(request);
     }
-    return next.handle(request);
-  }
 }
 </code></pre>
     </div>
-
 </div>
 
 
@@ -268,14 +268,14 @@ export class HttpIntercepterBasicAuthService {
 
 
 
-                   
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -287,18 +287,27 @@ export class HttpIntercepterBasicAuthService {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'HttpIntercepterBasicAuthService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interceptor';
+            var COMPODOC_CURRENT_PAGE_URL = 'JwtInterceptor.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
-       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+
        <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
